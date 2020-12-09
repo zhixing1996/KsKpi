@@ -1,0 +1,19 @@
+yesPhotos
+
+Decay J/psi
+1  anti-K*0 K_S0  HELAMP 1.0 0.0 0.0 0.0 -1.0 0.0;
+1  K*0 K_S0       HELAMP 1.0 0.0 0.0 0.0 -1.0 0.0;
+Enddecay
+
+Decay anti-K*0
+1   K- pi+  VSS;
+Enddecay
+
+Decay K*0
+1   K+ pi-  VSS;
+Enddecay
+
+Decay K_S0
+1 pi+ pi-   PHSP;
+Enddecay
+End
