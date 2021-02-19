@@ -84,6 +84,7 @@ StatusCode KsKpi::initialize(){
 			status = m_tuple1->addItem("vfitcos",             m_vfit_cos);
 			status = m_tuple1->addItem("vfitphi",             m_vfit_phi);
 			status = m_tuple1->addItem("vfitpt",              m_vfit_pt);
+			status = m_tuple1->addItem("var_kstar",           m_var_kstar);
 			status = m_tuple1->addItem("vfitmkstar",          2, m_vfit_mkstar);
 			status = m_tuple1->addItem("vfits_chi",           m_vfits_chi); 
 			status = m_tuple1->addItem("vfit2_mks",           m_vfit2_mks);
@@ -540,11 +541,11 @@ StatusCode KsKpi::execute() {
 	}
 	m_nkcond=nkcond_temp;
 	m_nMatch=nMatch_temp;
-	if(m_vfit2_dl/m_vfit2_dle<2.3) return StatusCode::SUCCESS;
-	if(fabs(m_vfit2_mks-0.497614)>0.008) return StatusCode::SUCCESS;
-	double var_kstar=fabs(m_vfit_mkstar[0]-0.89594);
-	if(var_kstar>=0.12) return StatusCode::SUCCESS;
-    if(m_vfit_pt>0.1) return StatusCode::SUCCESS;
+	// if(m_vfit2_dl/m_vfit2_dle<2.3) return StatusCode::SUCCESS;
+	// if(fabs(m_vfit2_mks-0.497614)>0.008) return StatusCode::SUCCESS;
+	m_var_kstar=fabs(m_vfit_mkstar[0]-0.89594);
+	// if(var_kstar>=0.12) return StatusCode::SUCCESS;
+    // if(m_vfit_pt>0.1) return StatusCode::SUCCESS;
 	Ncut4++;
 
 	/****************************************************************/

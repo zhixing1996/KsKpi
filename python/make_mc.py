@@ -63,9 +63,9 @@ def main():
         f.write('#include "$MAGNETICFIELDROOT/share/MagneticField.txt"\n')
         f.write('#include "$ABSCORROOT/share/jobOptions_AbsCor.txt"\n')
         f.write('\n')
-        f.write('ApplicationMgr.DLLs += {"pipi_jpsiAlg"};\n')
-        f.write('ApplicationMgr.TopAlg +={ "pipi_jpsi" };\n')
-        f.write('pipi_jpsi.Ecms = '+str(ECMS(float(ecms)))+';\n')
+        f.write('ApplicationMgr.DLLs += {"KsKpiAlg"};\n')
+        f.write('ApplicationMgr.TopAlg +={ "KsKpi" };\n')
+        f.write('KsKpi.Ecms = '+str(ECMS(float(ecms))/1000.)+';\n')
         f.write('\n')
         f.write('// Input REC or DST file name\n')
         f.write('EventCnvSvc.digiRootInputFile = {\n')
@@ -85,7 +85,7 @@ def main():
         f.write('ApplicationMgr.EvtMax = -1;\n')
         f.write('\n')
         f.write('ApplicationMgr.HistogramPersistency = "ROOT";\n')
-        f.write('NTupleSvc.Output = {\"FILE1 DATAFILE=\'/besfs/groups/cal/dedx/$USER/bes/PipiJpsi/run/pipi_jpsi/rootfile/'+sample+'/'+type+'/'+ecms+'/'+sample+'_'+decay+'_'+mode+'_'+ecms+'_'+str(i)+'.root'+'\' OPT=\'NEW\' TYP=\'ROOT\'\"};\n')
+        f.write('NTupleSvc.Output = {\"FILE1 DATAFILE=\'/besfs/groups/cal/dedx/$USER/bes/KsKpi/run/KsKpi/rootfile/'+sample+'/'+type+'/'+ecms+'/'+sample+'_'+decay+'_'+mode+'_'+ecms+'_'+str(i)+'.root'+'\' OPT=\'NEW\' TYP=\'ROOT\'\"};\n')
         f.close()
         i = i + 1
     print 'All done!'

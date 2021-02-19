@@ -20,11 +20,11 @@ for ECM in ${ECMS[@]}; do
     cd $JobText_SaveDir
     cp -r $Script_Dir/jobOptions_sim_sig_Ks_K_Pi_HELAMP_tempE_705.sh jobOptions_sim_sig_Ks_K_Pi_HELAMP_${ECM}_705.sh
     cp -r $Script_Dir/jobOptions_rec_sig_Ks_K_Pi_HELAMP_tempE_705.sh jobOptions_rec_sig_Ks_K_Pi_HELAMP_${ECM}_705.sh
-    sh jobOptions_sim_sig_Ks_K_Pi_HELAMP_${ECM}_705.sh 0 39 $ECM ${CMS[$COUNT]} 5000 ${RUNNO_LOW[$COUNT]} ${RUNNO_UP[$COUNT]}
-    sh jobOptions_rec_sig_Ks_K_Pi_HELAMP_${ECM}_705.sh 0 39 $ECM
+    sh jobOptions_sim_sig_Ks_K_Pi_HELAMP_${ECM}_705.sh 0 199 $ECM ${CMS[$COUNT]} 5000 ${RUNNO_LOW[$COUNT]} ${RUNNO_UP[$COUNT]}
+    sh jobOptions_rec_sig_Ks_K_Pi_HELAMP_${ECM}_705.sh 0 199 $ECM
     rm -rf /besfs/groups/cal/dedx/$USER/bes/KsKpi/run/KsKpi/rtraw/KsKpi/$ECM/*.rtraw
     rm -rf /besfs/groups/cal/dedx/$USER/bes/KsKpi/run/KsKpi/dst/KsKpi/$ECM/*.dst
     cp -rf /besfs/groups/cal/dedx/$USER/bes/KsKpi/run/KsKpi/gen_script/gen_mc/subSimRec.sh ./
-    sh subSimRec.sh jobOptions_sim_sig_Ks_K_Pi_HELAMP_$ECM jobOptions_rec_sig_Ks_K_Pi_HELAMP_$ECM subSimRec_Ks_K_Pi_$ECM 0 39
+    sh subSimRec.sh jobOptions_sim_sig_Ks_K_Pi_HELAMP_$ECM jobOptions_rec_sig_Ks_K_Pi_HELAMP_$ECM subSimRec_Ks_K_Pi_$ECM 0 199
     COUNT=$((${COUNT}+1))
 done

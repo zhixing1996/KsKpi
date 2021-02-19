@@ -22,6 +22,7 @@ usage_0_1() {
     printf "\n\t%-9s  %-40s"  "0.1.3"     "Test for data"
     printf "\n\t%-9s  %-40s"  "0.1.4"     "Submit Condor jobs on data ---- 2"
     printf "\n\t%-9s  %-40s"  "0.1.5"     "Synthesize data root files"
+    printf "\n\t%-9s  %-40s"  "0.1.6"     "Apply cuts"
     printf "\n\t%-9s  %-40s"  ""           ""
     printf "\n"
 }
@@ -30,6 +31,8 @@ usage_0_2() {
     printf "\n\t%-9s  %-40s"  ""          ""
     printf "\n\t%-9s  %-40s"  "0.2.1"     "Generate MC samples ---- Simulation && Reconstruction"
     printf "\n\t%-9s  %-40s"  "0.2.2"     "Generate MC samples ---- Event Selection"
+    printf "\n\t%-9s  %-40s"  "0.2.3"     "Synthesize MC sample root files"
+    printf "\n\t%-9s  %-40s"  "0.2.4"     "Apply cuts"
     printf "\n\t%-9s  %-40s"  ""           ""
     printf "\n"
 }
@@ -92,6 +95,17 @@ case $option in
            ./syn_Data_KsKpi.sh 705
 	       ;;
 
+    0.1.6) echo "Apply cuts ..."
+           cd ./run/KsKpi/gen_script
+           ./apply_cuts_Data_KsKpi.sh 705
+           mv Apply_Cuts_Data_705 ../logfile
+           cd ../logfile
+           chmod u+x Apply_Cuts_Data_705
+           bash Apply_Cuts_Data_705
+           rm -r Apply_Cuts_Data_705
+           cd /besfs/groups/cal/dedx/$USER/bes/KsKpi
+	       ;;
+
 esac
 
 }
@@ -131,6 +145,24 @@ case $option in
            read opt
            if [ $opt == "KsKpi" ]; then
                ./syn_MC_KsKpi.sh 705 KsKpi
+           else
+               echo "Please add the MC simulation joboption files!"
+           fi
+	       ;;
+
+    0.2.4) echo "Apply cuts ..."
+           cd ./run/KsKpi/gen_script
+           echo "which MC sample do you want to synthesize?"
+           echo "    KsKpi       --> e+e- --> KsK+pi- + c.c."
+           read opt
+           if [ $opt == "KsKpi" ]; then
+               ./apply_cuts_MC_KsKpi.sh 705 KsKpi
+               mv Apply_Cuts_KsKpi_705 ../logfile
+               cd ../logfile
+               chmod u+x Apply_Cuts_KsKpi_705
+               bash Apply_Cuts_KsKpi_705
+               rm -r Apply_Cuts_KsKpi_705
+               cd /besfs/groups/cal/dedx/$USER/bes/KsKpi
            else
                echo "Please add the MC simulation joboption files!"
            fi

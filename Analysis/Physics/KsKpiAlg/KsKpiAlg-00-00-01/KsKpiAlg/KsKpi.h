@@ -56,6 +56,7 @@ private:
   NTuple::Item<double>   m_vfit_pt;
   NTuple::Item<double>   m_vfit_pkaon;
   NTuple::Array<double>   m_vfit_mkstar;
+  NTuple::Item<double>   m_var_kstar;
   NTuple::Item<double>  m_vfits_chi;
   NTuple::Item<double>  m_vfit2_mks;
   NTuple::Item<double>  m_vfit2_chi;
